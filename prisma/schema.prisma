@@ -1,0 +1,88 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+  // output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+model State {
+  id              String   @id @default(cuid())
+  sourcePortalId  String   @unique
+  code            String   @unique
+  name            String
+  raw             String?
+
+  lgas            LGA[]
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("states")
+}
+
+model LGA {
+  id              String   @id @default(cuid())
+  sourcePortalId  String   @unique
+  code            String
+  name            String
+  raw             String?
+
+  stateId         String
+  state           State    @relation(fields: [stateId], references: [id], onDelete: Restrict)
+
+  wards           Ward[]
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@unique([stateId, code])
+  @@index([stateId])
+  @@map("lgas")
+}
+
+model Ward {
+  id              String   @id @default(cuid())
+  sourcePortalId  String   @unique
+  code            String
+  name            String
+  raw             String?
+
+  lgaId           String
+  lga             LGA      @relation(fields: [lgaId], references: [id], onDelete: Restrict)
+
+  pollingUnits    PollingUnit[]
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@unique([lgaId, code])
+  @@index([lgaId])
+  @@map("wards")
+}
+
+model PollingUnit {
+  id              String   @id @default(cuid())
+  sourcePortalId  String   @unique
+  code            String
+  name            String
+  location        String?
+  fullCode        String   @unique
+
+  wardId          String
+  ward            Ward     @relation(fields: [wardId], references: [id], onDelete: Restrict)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([wardId])
+  @@map("polling_units")
+}

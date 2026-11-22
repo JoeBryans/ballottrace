@@ -1,0 +1,76 @@
+{
+  "_readme": [
+    "Known alternative names, mapping what other datasets call a place to what INEC calls it.",
+    "",
+    "This is DATA, not code, so every language binding gets the same knowledge.",
+    "It exists because string similarity cannot reach most of these: 'Yewa North'",
+    "is nearest to 'Remo North' (0.67) but is actually Egbado North, renamed in",
+    "2020; 'Ado' scores 0.38 against 'Ado Ekiti'; 'Edda' scores 0.22 against its",
+    "real target Afikpo South. Each entry below was verified against INEC's list,",
+    "not guessed by a metric.",
+    "",
+    "Deliberately ABSENT are names that are genuinely ambiguous. A bare 'Ezza'",
+    "could be Ezza North or Ezza South; 'Aniocha', 'Oshimili' and 'Afikpo' split",
+    "the same way; Edo's 'Central' could be Esan Central or Etsako Central. Those",
+    "must come back as ambiguous with candidates, never as a silent guess -- the",
+    "resolver handles them by scoring, and adding them here would defeat that.",
+    "",
+    "`target` matches the `name` field exactly. `state` scopes the entry so an",
+    "alias can never match across state lines."
+  ],
+
+  "state": [
+    { "alias": "Abuja", "target": "FCT", "reason": "the city; INEC lists the territory" },
+    { "alias": "Federal Capital Territory", "target": "FCT", "reason": "full form" },
+    { "alias": "FCT Abuja", "target": "FCT", "reason": "common combined form" },
+    { "alias": "Nassarawa", "target": "NASARAWA", "reason": "common double-s misspelling" },
+    { "alias": "Bendel", "target": "EDO", "reason": "pre-1991 state, split into Edo and Delta; maps to Edo by convention" }
+  ],
+
+  "lga": [
+    { "state": "FCT", "alias": "Abuja Municipal", "target": "MUNICIPAL", "reason": "AMAC; INEC lists it simply as Municipal" },
+    { "state": "FCT", "alias": "AMAC", "target": "MUNICIPAL", "reason": "the usual acronym" },
+
+    { "state": "Ogun", "alias": "Yewa North", "target": "EGBADO NORTH", "reason": "renamed 2020; INEC still lists the former name" },
+    { "state": "Ogun", "alias": "Yewa South", "target": "EGBADO SOUTH", "reason": "renamed 2020; INEC still lists the former name" },
+
+    { "state": "Ebonyi", "alias": "Edda", "target": "AFIKPO SOUTH", "reason": "historic name of Afikpo South" },
+    { "state": "Ebonyi", "alias": "lkwo", "target": "IKWO", "reason": "lower-case L typed for a capital I" },
+
+    { "state": "Ekiti", "alias": "Ado", "target": "ADO EKITI", "reason": "short form" },
+    { "state": "Ekiti", "alias": "Irepodun", "target": "IREPODUN / IFELODUN", "reason": "short form; Ekiti has one Irepodun LGA" },
+    { "state": "Ekiti", "alias": "Ifelodun", "target": "IREPODUN / IFELODUN", "reason": "the other half of the same combined LGA" },
+
+    { "state": "Gombe", "alias": "Yamaltu/Deba", "target": "YALMALTU/ DEBA", "reason": "INEC's spelling transposes the l" },
+    { "state": "Gombe", "alias": "Yamaltu Deba", "target": "YALMALTU/ DEBA", "reason": "unslashed form" },
+
+    { "state": "Ondo", "alias": "Ile-Oluji", "target": "ILEOLUJI/OKEIGBO", "reason": "short form of the combined LGA" },
+    { "state": "Ondo", "alias": "Okeigbo", "target": "ILEOLUJI/OKEIGBO", "reason": "the other half of the same combined LGA" },
+
+    { "state": "Osun", "alias": "Aiyedade", "target": "AYEDAADE", "reason": "Ai- spelling variant; NOT the separate Ayedire LGA" },
+    { "state": "Osun", "alias": "Aiyedire", "target": "AYEDIRE", "reason": "Ai- spelling variant; NOT the separate Ayedaade LGA" },
+
+    { "state": "Sokoto", "alias": "Sabon Birni", "target": "S/BIRNI", "reason": "INEC abbreviates Sabon to S/" },
+
+    { "state": "Abia", "alias": "Umu-Neochi", "target": "UMU - NNEOCHI", "reason": "spacing and n-doubling differ" },
+    { "state": "Abia", "alias": "Isuikwato", "target": "ISUIKWUATO", "reason": "missing u" },
+    { "state": "Abia", "alias": "Obi Ngwa", "target": "OBINGWA", "reason": "spacing" },
+
+    { "state": "Borno", "alias": "Maiduguri", "target": "MAIDUGURI M. C.", "reason": "INEC appends Metropolitan Council" },
+
+    { "state": "Bayelsa", "alias": "Yenagoa", "target": "YENAGOA", "reason": "canonical; listed so the common Yenegoa misspelling resolves by similarity" },
+
+    { "state": "Kaduna", "alias": "Zango Kataf", "target": "ZANGON KATAF", "reason": "missing n" },
+    { "state": "Kaduna", "alias": "Birnin Gwari", "target": "BIRNIN GWARI", "reason": "canonical form of the frequently hyphenated Birni-Gwari" },
+
+    { "state": "Lagos", "alias": "Shomolu", "target": "SOMOLU", "reason": "h-inserted variant" },
+    { "state": "Ogun", "alias": "Shagamu", "target": "SAGAMU", "reason": "h-inserted variant" },
+
+    { "state": "Oyo", "alias": "Ogbomosho North", "target": "OGBOMOSO NORTH", "reason": "h-inserted variant" },
+    { "state": "Oyo", "alias": "Ogbomosho South", "target": "OGBOMOSO SOUTH", "reason": "h-inserted variant" },
+
+    { "state": "Cross River", "alias": "Yakurr", "target": "YAKURR", "reason": "canonical; the common Yarkur misspelling resolves by similarity" },
+
+    { "state": "Enugu", "alias": "Igbo Etiti", "target": "IGBO ETITI", "reason": "canonical; the common Igbo-Ekiti misspelling resolves by similarity" }
+  ]
+}
