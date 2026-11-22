@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ShieldCheck } from "lucide-react";
 
+const currentYear = new Date().getFullYear();
+
 export function Footer() {
   return (
     <footer className="bg-[#071d31] px-5 py-14 text-white">
@@ -44,7 +46,7 @@ export function Footer() {
       </div>
 
       <div className="mx-auto mt-12 max-w-7xl border-t border-white/10 pt-7 text-center text-xs text-slate-500">
-        © {new Date().getFullYear()} BallotTrace. All rights reserved.
+        © {currentYear} BallotTrace. All rights reserved.
       </div>
     </footer>
   );
